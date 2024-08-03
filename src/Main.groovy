@@ -11,7 +11,7 @@ pipeline {
       steps {
         script {
           // Загрузить функции из внешнего скрипта
-          telegramUtils = load 'src/TelegramUtils.groovy'
+          telegramUtils = load 'src/sendTelegramNotification.groovy'
         }
       }
     }
