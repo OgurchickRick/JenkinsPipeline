@@ -6,22 +6,13 @@ pipeline {
   }
   stages {
     stage('Checkout') {
-      script {
-        // Импортировать файл checkout.groovy
-        load 'checkout.groovy'
-      }
+      load 'checkout.groovy'
     }
     stage('Build') {
-      script {
-        // Импортировать файл build.groovy
-        load 'build.groovy'
-      }
+      load 'build.groovy'
     }
     stage('Publish') {
-      script {
-        // Импортировать файл publish.groovy
-        load 'publish.groovy'
-      }
+      load 'publish.groovy'
     }
   }
   post {

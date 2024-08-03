@@ -1,1 +1,3 @@
-echo 'Deploying...'
+steps {
+    echo 'Deploying...'
+}

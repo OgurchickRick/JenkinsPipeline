@@ -1,1 +1,3 @@
-echo 'Checkout..'
+steps {
+    echo 'Checkout..'
+}
