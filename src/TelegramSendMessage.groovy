@@ -6,8 +6,6 @@ withCredentials([string(credentialsId: 'telegram_bot_token', variable: 'BOT_TOKE
                -d text="*Performance Result*\n\n\
 \\- *Job Name:* ${env.JOB_NAME}\n\
 \\- *Status:* \n\
-\\- *Build Number:* ${env.BUILD_NUMBER}\n\
-\\- *Start Time:* ${startTime}\n\
-\\- *End Time:* ${endTime}" \
+\\- *Build Number:* ${env.BUILD_NUMBER}" \
         """
 }
