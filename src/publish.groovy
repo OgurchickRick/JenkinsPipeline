@@ -1,3 +1,4 @@
-steps {
-    echo 'Deploying...'
+node {
+    echo "Publishing artifacts..."
+    echo "Publish completed"
 }

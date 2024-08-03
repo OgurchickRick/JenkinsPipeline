@@ -6,13 +6,25 @@ pipeline {
   }
   stages {
     stage('Checkout') {
-      load 'checkout.groovy'
+      steps {
+        script {
+          load 'checkout.groovy'
+        }
+      }
     }
     stage('Build') {
-      load 'build.groovy'
+      steps {
+        script {
+          load 'build.groovy'
+        }
+      }
     }
     stage('Publish') {
-      load 'publish.groovy'
+      steps {
+        script {
+          load 'publish.groovy'
+        }
+      }
     }
   }
   post {
@@ -26,23 +38,23 @@ pipeline {
       withCredentials([string(credentialsId: 'telegram_bot_token', variable: 'BOT_TOKEN')]) {
         // Отправить текстовое сообщение
         sh """
-                    curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendMessage \
-                         -d chat_id=-4286525343 \
-                         -d parse_mode=MarkdownV2 \
-                         -d text="*Performance Result*\n\n\
+          curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendMessage \
+               -d chat_id=-4286525343 \
+               -d parse_mode=MarkdownV2 \
+               -d text="*Performance Result*\n\n\
 \\- *Job Name:* ${env.JOB_NAME}\n\
 \\- *Status:* ✅ Success\n\
 \\- *Build Number:* ${env.BUILD_NUMBER}\n\
 \\- *Start Time:* ${env.START_TIME}\n\
 \\- *End Time:* ${env.END_TIME}" \
-                """
+        """
 
         // Отправить файл
         sh """
-                    curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendDocument \
-                         -F chat_id=-4286525343 \
-                         -F document=@example.tar \
-                """
+          curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendDocument \
+               -F chat_id=-4286525343 \
+               -F document=@example.tar \
+        """
       }
     }
 
@@ -50,23 +62,23 @@ pipeline {
       withCredentials([string(credentialsId: 'telegram_bot_token', variable: 'BOT_TOKEN')]) {
         // Отправить текстовое сообщение
         sh """
-                    curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendMessage \
-                         -d chat_id=-4286525343 \
-                         -d parse_mode=MarkdownV2 \
-                         -d text="*Performance Result*\n\n\
+          curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendMessage \
+               -d chat_id=-4286525343 \
+               -d parse_mode=MarkdownV2 \
+               -d text="*Performance Result*\n\n\
 \\- *Job Name:* ${env.JOB_NAME}\n\
 \\- *Status:* ❌ Failed\n\
 \\- *Build Number:* ${env.BUILD_NUMBER}\n\
 \\- *Start Time:* ${env.START_TIME}\n\
 \\- *End Time:* ${env.END_TIME}" \
-                """
+        """
 
         // Отправить файл
         sh """
-                    curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendDocument \
-                         -F chat_id=-4286525343 \
-                         -F document=@example.tar \
-                """
+          curl -s -X POST https://api.telegram.org/bot${BOT_TOKEN}/sendDocument \
+               -F chat_id=-4286525343 \
+               -F document=@example.tar \
+        """
       }
     }
   }

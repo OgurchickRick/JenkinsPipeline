@@ -1,3 +1,3 @@
-steps {
-    echo 'Checkout..'
+node {
+    echo "Checkout completed"
 }
