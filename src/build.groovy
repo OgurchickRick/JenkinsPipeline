@@ -1,4 +1,2 @@
-node {
-    echo "Building project..."
-    echo "Build completed"
-}
+echo "Building project..."
+echo "Build completed"

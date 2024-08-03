@@ -1,3 +1,1 @@
-node {
-    echo "Checkout completed"
-}
+echo "Checkout completed"
