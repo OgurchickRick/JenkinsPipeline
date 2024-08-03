@@ -1,3 +1,5 @@
+load 'src/TelegramSendMessage.groovy'
+
 pipeline {
   agent any
   environment {
