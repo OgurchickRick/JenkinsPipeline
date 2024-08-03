@@ -37,13 +37,11 @@ pipeline {
     success {
       script {
         load 'src/TelegramSendMessage.groovy'
-        sendTelegramNotification('✅ Success')
       }
     }
     failure {
       script {
         load 'src/TelegramSendMessage.groovy'
-        sendTelegramNotification('❌ Failed')
       }
     }
   }
