@@ -1,5 +1,1 @@
-stage('Checkout') {
-    steps {
-        echo 'Checkout..'
-    }
-}
+echo 'Checkout..'
