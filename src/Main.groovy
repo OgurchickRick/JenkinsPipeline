@@ -28,12 +28,6 @@ pipeline {
     }
   }
   post {
-    always {
-      script {
-        // Установить время окончания сборки
-        env.END_TIME = new Date().format("yyyy-MM-dd HH:mm:ss")
-      }
-    }
     success {
       script {
         load 'src/TelegramSendMessage.groovy'
