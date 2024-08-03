@@ -1,4 +1,4 @@
-load 'src/TelegramSendMessage.groovy'
+def telegramUtils
 
 pipeline {
   agent any
@@ -7,6 +7,14 @@ pipeline {
     END_TIME = ''
   }
   stages {
+    stage('Initialize') {
+      steps {
+        script {
+          // Загрузить функции из внешнего скрипта
+          telegramUtils = load 'src/TelegramUtils.groovy'
+        }
+      }
+    }
     stage('Checkout') {
       steps {
         script {
@@ -32,12 +40,12 @@ pipeline {
   post {
     success {
       script {
-        load 'src/TelegramSendMessage.groovy'
+        telegramUtils.sendTelegramNotification('✅ Success')
       }
     }
     failure {
       script {
-        load 'src/TelegramSendMessage.groovy'
+        telegramUtils.sendTelegramNotification('❌ Failed')
       }
     }
   }
