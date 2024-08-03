@@ -8,21 +8,21 @@ pipeline {
     stage('Checkout') {
       steps {
         script {
-          load 'checkout.groovy'
+          load 'src/checkout.groovy'
         }
       }
     }
     stage('Build') {
       steps {
         script {
-          load 'build.groovy'
+          load 'src/build.groovy'
         }
       }
     }
     stage('Publish') {
       steps {
         script {
-          load 'publish.groovy'
+          load 'src/publish.groovy'
         }
       }
     }
